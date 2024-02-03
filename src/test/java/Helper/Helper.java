@@ -6,11 +6,14 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import java.net.MalformedURLException;
+import pages.Products;
+import pages.Sidebar;
 
 
 public class Helper{
 
     Browser browser;
+    Products products;
 
     @BeforeTest
     private void setUp() throws MalformedURLException {
@@ -19,7 +22,8 @@ public class Helper{
 
     @AfterClass
     private void logout(){
-
+        products.expand_sidebar();
+        click_on_element(Sidebar.logout_button);
     }
 
     @AfterTest
@@ -37,15 +41,6 @@ public class Helper{
 
     private void click_on_element(WebElement element){
         browser.click_on_element(element);
-    }
-
-
-    private void send_key(WebElement element, String key){
-        browser.send_key(element, key);
-    }
-
-    private void reset_app_data(){
-
     }
 
     public boolean is_visible(@NotNull WebElement element){

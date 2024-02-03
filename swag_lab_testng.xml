@@ -2,5 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="none">
 
-
+    <test name="Swag Lab Tests">
+        <groups>
+            <run>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.LoginPageTests"/>
+        </classes>
+    </test>
 </suite> <!-- Suite -->

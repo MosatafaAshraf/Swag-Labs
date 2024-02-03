@@ -21,10 +21,9 @@ public class LoginPage {
 
     @DataProvider
     public Object [][] loginData(){
-        Object [] [] data = new Object[1][2];
-        data[0][0] = "problem_user";
-        data[0][1] = "secret_sauce";
-        return data;
+        return new Object[][] {
+                {"problem_user", "secret_sauce"}
+        };
     }
 
     public void login(String user_name, String password){
