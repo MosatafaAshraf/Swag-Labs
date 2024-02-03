@@ -1,10 +1,16 @@
-FROM maven:3.6.3-jdk-11
+FROM ubuntu:latest
 LABEL authors="Mostafa_Ashraf"
 
-WORKDIR /usr/src/app
-COPY . /usr/src/app
+RUN apt-get update && apt-get install -y openjdk-11-jdk
 
-RUN apt-get update && apt-get install -y chromium-driver
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+WORKDIR /usr/src/app
+COPY . .
+
+RUN apt-get update && apt-get install -y chromium-driver && \
+    apt-get update &&apt-get install -y maven
+
 ENV CHROME_DRIVER_PATH=/usr/lib/chromium-browser/chromedriver
 
-CMD["mvn", "test"]
+CMD ["mvn", "test"]

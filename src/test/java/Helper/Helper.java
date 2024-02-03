@@ -1,10 +1,10 @@
 package Helper;
 
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterClass;
-
+import org.testng.annotations.AfterTest;
 import java.net.MalformedURLException;
 
 
@@ -16,6 +16,17 @@ public class Helper{
     private void setUp() throws MalformedURLException {
         browser = new Browser("https://www.saucedemo.com/");
     }
+
+    @AfterClass
+    private void logout(){
+
+    }
+
+    @AfterTest
+    private void tearDown(){
+        browser.quit();
+    }
+
     private String get_current_url(){
         return browser.get_current_url();
     }
@@ -33,17 +44,11 @@ public class Helper{
         browser.send_key(element, key);
     }
 
-    @AfterClass
-    private void logout(){
-
-    }
-
     private void reset_app_data(){
 
     }
 
-    @AfterTest
-    private void tearDown(){
-        browser.quit();
+    public boolean is_visible(@NotNull WebElement element){
+        return element.isDisplayed();
     }
 }
