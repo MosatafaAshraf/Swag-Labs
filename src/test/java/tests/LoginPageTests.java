@@ -34,9 +34,11 @@ public class LoginPageTests extends Helper{
     @Test(dataProviderClass = LoginPage.class, dataProvider = "loginData")
     public void addToCart(String username, String password){
         loginPage.login(username, password);
+        logger.info("Adding item to cart");
         products.add_to_cart();
         // add to cart button can be tested to be clickable as well
         Assert.assertTrue(is_visible(Products.remove_backpack_from_cart));
+        logger.info("Item added and can be removed or proceed to checkout");
     }
 
     @Test(dataProviderClass = LoginPage.class, dataProvider = "loginData")
